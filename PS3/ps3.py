@@ -93,19 +93,26 @@ def get_word_score(word, n):
     """
     
     word = word.lower()
-    var = 0
+    var1 = 0
+
     for let in word:
-        var += SCRABBLE_LETTER_VALUES[let]
-    
-    var2 = (7 * len(word)) - (3 * (n - len(word)))
+        if let in SCRABBLE_LETTER_VALUES:
+            var1 += SCRABBLE_LETTER_VALUES[let]
+
+    var2 = 7 * len(word) - 3 * (n - len(word))
 
     if var2 <= 0:
         var2 = 1
 
-    result = var * var2
-    return result
+    retval = var1 * var2
 
-      # TO DO... Remove this line when you implement this function
+    if n == 0:
+        retval = 0
+
+
+    return retval
+
+    
 
 #
 # Make sure you understand how this function works and what it does!
@@ -181,7 +188,17 @@ def update_hand(hand, word):
     returns: dictionary (string -> int)
     """
 
-    pass  # TO DO... Remove this line when you implement this function
+    new_hand = hand.copy()
+    word = word.lower()
+    for let in word:
+        if let in new_hand:
+            if new_hand.get(let) > 0:
+                new_hand[let] -= 1
+            
+    return new_hand
+            
+
+
 
 #
 # Problem #3: Test word validity
@@ -197,6 +214,29 @@ def is_valid_word(word, hand, word_list):
     word_list: list of lowercase strings
     returns: boolean
     """
+
+    word = word.upper()
+    new_hand = hand.copy()
+
+
+    for let in word:
+        if let in new_hand:
+            if new_hand.get(let) > 0:
+                new_hand[let] -= 1
+        else:
+
+
+
+    for aword in word_list:
+        if word == aword:
+            return True
+            break
+        else:
+            return False
+
+        
+
+
 
     pass  # TO DO... Remove this line when you implement this function
 
