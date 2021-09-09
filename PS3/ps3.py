@@ -223,7 +223,10 @@ def is_valid_word(word, hand, word_list):
         if let in new_hand:
             if new_hand.get(let) > 0:
                 new_hand[let] -= 1
+	    else: 
+		return False
         else:
+		return False
 
 
 
@@ -236,9 +239,6 @@ def is_valid_word(word, hand, word_list):
 
         
 
-
-
-    pass  # TO DO... Remove this line when you implement this function
 
 #
 # Problem #5: Playing a hand
