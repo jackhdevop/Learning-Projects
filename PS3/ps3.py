@@ -215,7 +215,7 @@ def is_valid_word(word, hand, word_list):
     returns: boolean
     """
 
-    word = word.upper()
+    word = word.lower()
     new_hand = hand.copy()
 
 
@@ -223,19 +223,15 @@ def is_valid_word(word, hand, word_list):
         if let in new_hand:
             if new_hand.get(let) > 0:
                 new_hand[let] -= 1
-	    else: 
-		return False
-        else:
-		return False
+            else: return False
+        else: return False
 
 
 
     for aword in word_list:
         if word == aword:
             return True
-            break
-        else:
-            return False
+
 
         
 
